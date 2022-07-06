@@ -130,7 +130,7 @@ const Upload = () => {
             </label>
             <select 
             className="p-2 capitalize border-2 border-gray-200 rounded outline-none cursor-pointer text-md lg:p-4"
-            onChange={(e) =>{ setCategory(e.target.value) }}
+            onChange={(e:any) =>{ setCategory(e.target.value) }}
             name="" id="">
               {topics.map(topic => (
                 <option value={topic.name} key={topic.name} className="p-2 text-gray-700 capitalize bg-white outline-none text-md hover:bg-slate-300">
