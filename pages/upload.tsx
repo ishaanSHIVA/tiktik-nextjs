@@ -42,7 +42,7 @@ const Upload = () => {
         },
         topic: category
       }
-      await axios.post("/api/post",document)
+      await axios.post("https://tiktik-nextjs.vercel.app/api/post",document)
       router.push('/')
     }
   }

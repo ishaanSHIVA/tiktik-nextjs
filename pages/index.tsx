@@ -27,7 +27,7 @@ const Home: NextPage<IProps> = ({ videos }) => {
 }
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get(`/api/post`)
+  const { data } = await axios.get(`https://tiktik-nextjs.vercel.app/api/post`)
   console.log(data)
     return {
         props: {

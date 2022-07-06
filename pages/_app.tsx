@@ -23,7 +23,6 @@ Router.events.on("routeChangeError",  progress.finish);
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 
-  console.log(process.env.NEXT_PUBLIC_GOOGLE_API_CLIENT_ID)
 
   // return           <Component {...pageProps} />
 
