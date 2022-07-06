@@ -44,7 +44,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
           </Link>
         </div>
         <div className="">
-          <Link href="/">
+          <Link href={`/detail/${post._id}`}>
             <div className="flex items-center gap-2">
               <p className="flex items-center gap-2 font-bold md:text-md ">{post.postedBy.userName}</p> {`
               `}

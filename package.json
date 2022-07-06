@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.2.1",
     "@react-oauth/google": "^0.2.6",
     "@sanity/client": "^3.3.0",
     "axios": "^0.27.2",

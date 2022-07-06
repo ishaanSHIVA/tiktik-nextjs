@@ -1,5 +1,3 @@
-
-
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { client } from '../../../utils/client'
@@ -10,20 +8,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if(req.method === 'GET')
+  if(req.method === 'POST')
   {
-    const query = allPostsQuery()
+    const user = req.body;
+
+    client.createIfNotExists(user)
+      .then(() =>{
+        res.status(200).json("login success")
+      })
 
 
-    const data = await client.fetch(query)
-
-    res.status(200).json(data)
-
-
-  } else if(req.method === 'POST') {
-    const document = req.body
-    await client.create(document).then(data => {
-      res.status(201).json("Video created")
-    })
   }
 }
