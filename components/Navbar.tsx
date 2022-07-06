@@ -7,7 +7,7 @@ import { BiSearch } from 'react-icons/bi'
 import { IoMdAdd  } from 'react-icons/io'
 import Logo from "../utils/tiktik-logo.png"
 import Link from 'next/link'
-import { createOrGetUser } from '../utils'
+// import { createOrGetUser } from '../utils'
 
 
 const Navbar = () => {
