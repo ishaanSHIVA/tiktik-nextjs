@@ -26,6 +26,7 @@ const Home: NextPage<IProps> = ({ videos }) => {
 
 export const getServerSideProps = async () => {
   const { data } = await axios.get(`http://localhost:3000/api/post`)
+  console.log(data)
     return {
         props: {
           videos:data
