@@ -42,7 +42,7 @@ const Upload = () => {
         },
         topic: category
       }
-      await axios.post("http://localhost:3000/api/post",document)
+      await axios.post("/api/post",document)
       router.push('/')
     }
   }

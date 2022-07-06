@@ -6,6 +6,7 @@ import { Video } from '../types'
 
 import VideoCard from '../components/VideoCard'
 import NoResults from '../components/NoResults'
+import { useRouter } from 'next/router'
 
 
 interface IProps {
@@ -13,6 +14,7 @@ interface IProps {
 }
 
 const Home: NextPage<IProps> = ({ videos }) => {
+
   return (
     <div className="flex flex-col h-full gap-10 videos">
      {videos?.length ? videos.map((video:Video) => (
@@ -25,7 +27,7 @@ const Home: NextPage<IProps> = ({ videos }) => {
 }
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get(`http://localhost:3000/api/post`)
+  const { data } = await axios.get(`/api/post`)
   console.log(data)
     return {
         props: {
