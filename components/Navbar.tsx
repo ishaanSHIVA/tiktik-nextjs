@@ -25,13 +25,13 @@ const Navbar = () => {
           ></Image>
         </div>
       </Link>
-
+{/* 
       <div className="relative hidden md:block ">
         <form onSubmit={handleSearch} className="absolute ">
           
           
         </form>
-      </div>
+      </div> */}
 
       <div className="">
         {userProfile ? (
