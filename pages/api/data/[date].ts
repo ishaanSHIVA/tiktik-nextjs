@@ -6,12 +6,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if(req.method === 'POST')
+  if(req.method === 'GET')
   {
-
-        res.status(200).send(req.query.id)
-      
-
+        res.status(200).send(req)
+  
 
   }
 }
