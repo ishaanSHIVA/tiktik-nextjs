@@ -7,9 +7,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if(req.method === 'GET')
+  if(req.method === 'POST')
   {
-    const { id } = req.query 
+    const { id } = req.body 
     
     const query = await singleUserQuery(id)
     const queryVideoQuery = await userCreatedPostsQuery(id)

@@ -24,7 +24,7 @@ Router.events.on("routeChangeError",  progress.finish);
 const MyApp = ({ Component, pageProps }: AppProps) => {
 
 
-  return           <Component {...pageProps} />
+  // return           <Component {...pageProps} />
 
 
   const [isSSR,setisSSR] = useState(true)
