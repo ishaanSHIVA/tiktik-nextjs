@@ -9,7 +9,7 @@ export default async function handler(
   if(req.method === 'POST')
   {
 
-        res.status(200).json(req.query.id)
+        res.status(200).send(req.query.id)
       
 
 
