@@ -20,6 +20,10 @@ interface IProps {
 
 const Profile = ({ data }:IProps) => {
 
+  return (
+    <div className="">hi</div>
+  )
+
   console.log(data)
 
   
@@ -40,19 +44,6 @@ const Profile = ({ data }:IProps) => {
       
   },[showUserVideos,data.userLiked,data.userVideos])
 
-  useEffect(() => {
-   const func = async () => {
-     const { data } = await axios.post(`${BASE_URL}/api/profile`,{
-        id:"106259769714971591941"
-    },{
-      headers: {
-    'Content-Type': 'application/json'
-    }
-    })
-    console.log(data)
-   }
-   func()
-  },[])
 
   return (
     <div className="w-full">
