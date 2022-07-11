@@ -23,8 +23,8 @@ const LikeButton = ({handleLike,handleDislike,likes}:IProps) => {
         {setAlreadyLiked(false)}
     },[likes])
   return (
-    <div className="gap-6 ">
-        <div className="flex flex-col items-center justify-center mt-4 cursor-auto">
+      <div className="flex">
+        <div  className="flex flex-col items-center justify-center cursor-auto">
             {
                 alreadyLiked ? (
                     <div className="p-2 rounded-full bg-primary md:p-4 text-[#f51997]" onClick={handleDislike}>
@@ -38,7 +38,7 @@ const LikeButton = ({handleLike,handleDislike,likes}:IProps) => {
             }
             <p className="font-semibold text-md ">{likes?.length || 0}</p>
         </div>
-    </div>
+        </div>
   )
 }
 

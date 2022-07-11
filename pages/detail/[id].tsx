@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import next from "next";
 import { GoVerified } from "react-icons/go";
 import { MdOutlineCancel } from "react-icons/md";
 import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
@@ -23,6 +21,8 @@ const Detail = ({ postDetails }: IProps) => {
   const [post, setPost] = useState(postDetails);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
   const { userProfile }:any = useAuthStore()
+  const [comment, setComment] = useState("")
+  const [isPostingComment, setIsPostingComment] = useState(false)
 
   const videoRef = useRef <any>(null);
 
@@ -54,6 +54,22 @@ const Detail = ({ postDetails }: IProps) => {
         setPost({ ...post,likes: data.likes });
       }
       
+  }
+
+  const addComment = async (e:React.FormEvent) => {
+      e.preventDefault();
+      if(userProfile && comment) { 
+          setIsPostingComment(true)
+          console.log("Sending requests!!!")
+          const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`,{
+            userId: userProfile?._id,
+            comment
+          })
+
+          setPost({ ...post,comments:data.comments })
+          setComment('') 
+          setIsPostingComment(false)
+      }
       
   }
 
@@ -105,7 +121,7 @@ const Detail = ({ postDetails }: IProps) => {
         </div>
       </div>
       <div className="relative w-[1000px] md:w-[900px] lg:w-[700px]">
-        <div className="m-10 lg:m-20">
+        <div className="mt-10 lg:mt-20">
           <div className="flex gap-3 p-2 font-semibold rounded cursor-pointer">
             <div className="w-10 h-10 md:w-16 md:h-16">
               <Link href="/">
@@ -123,7 +139,7 @@ const Detail = ({ postDetails }: IProps) => {
             <div className="">
               <Link href="/">
                 <div className="flex flex-col gap-2">
-                  <p className="flex items-center gap-2 font-bold md:text-md ">
+                  <p className="flex gap-2 font-bold md:text-md ">
                     {post.postedBy.userName}
                     <GoVerified className="text-blue-400 text-md" />
                   </p>{" "}
@@ -140,7 +156,7 @@ const Detail = ({ postDetails }: IProps) => {
           </div>
           <p className="px-10 text-lg text-gray-400 ">{post.caption}</p>
 
-          <div className="flex px-10 mt-10">
+          <div className="px-10 mt-10 ">
             {
               userProfile && (
                 <LikeButton
@@ -151,7 +167,13 @@ const Detail = ({ postDetails }: IProps) => {
                 />
               ) 
             }
-            <Comments />
+            <Comments 
+              comment={comment}
+              addComment={addComment}
+              isPostingComment={isPostingComment}
+              comments={post.comments}
+              setComment={setComment}
+            />
           </div>
         </div>
       </div>
