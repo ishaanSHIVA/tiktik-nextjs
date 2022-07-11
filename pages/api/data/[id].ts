@@ -9,8 +9,8 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  if(req.method === "POST") {
+  // if(req.method === "POST") {
         res.status(200).json({ "name": req.query.id })
 
-  }
+  // }
 }
