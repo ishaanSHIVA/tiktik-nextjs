@@ -7,7 +7,7 @@ import { Video } from '../types'
 import VideoCard from '../components/VideoCard'
 import NoResults from '../components/NoResults'
 import { useRouter } from 'next/router'
-
+import { BASE_URL } from '../utils'
 
 interface IProps {
   videos:Video[]
@@ -27,7 +27,7 @@ const Home: NextPage<IProps> = ({ videos }) => {
 }
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get(`https://tiktik-nextjs.vercel.app/api/post`)
+  const { data } = await axios.get(`${BASE_URL}/api/post`)
   console.log(data)
     return {
         props: {

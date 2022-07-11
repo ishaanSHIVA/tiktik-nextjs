@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { NextPage } from 'next'
 import {Video} from '../types'
@@ -30,7 +30,11 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
     }
   }
 
-  
+  useEffect(() => {
+      if(videoRef?.current) {
+        videoRef.current.muted = isVideoMuted;
+      } 
+  },[isVideoMuted])
 
   console.log(post)
   return (
@@ -44,7 +48,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
           </Link>
         </div>
         <div className="">
-          <Link href={`/detail/${post._id}`}>
+          <Link href="/">
             <div className="flex items-center gap-2">
               <p className="flex items-center gap-2 font-bold md:text-md ">{post.postedBy.userName}</p> {`
               `}
@@ -63,7 +67,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 
         
         className="rounded-3xl">
-          <Link href="/">
+          <Link href={`/detail/${post._id}`}>
             <video
             ref={videoRef}
               src={post.video.asset.url}
