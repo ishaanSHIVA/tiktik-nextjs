@@ -26,7 +26,12 @@ const Navbar = () => {
         </div>
       </Link>
 
-      <div className="">SEARCH</div>
+      <div className="relative hidden md:block ">
+        <form onSubmit={handleSearch} className="absolute ">
+          
+          
+        </form>
+      </div>
 
       <div className="">
         {userProfile ? (
