@@ -89,6 +89,7 @@ likes,
 };
 
 export const singleUserQuery = (userId: string | string[]) => {
+  console.log(`Searching ${userId}`)
   const query = `*[_type == "user" && _id == '${userId}']`;
 
   return query;

@@ -7,9 +7,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log(req.method)
   if(req.method === 'POST')
   {
+    console.log("entered")
     const { id } = req.body 
+
+    console.log("id ",req.body.id )
+
+
     
     const query = await singleUserQuery(id)
     const queryVideoQuery = await userCreatedPostsQuery(id)
@@ -18,6 +24,8 @@ export default async function handler(
     const user = await client.fetch(query)
     const userVideos = await client.fetch(queryVideoQuery)
     const userLiked = await client.fetch(queryLikedQuery)
+    
+    console.log("User ",user)
 
     res.status(200).json({user :user[0] ,userVideos,userLiked})
   }
