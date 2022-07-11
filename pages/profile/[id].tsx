@@ -88,21 +88,21 @@ const Profile = ({ data }:IProps) => {
 }
 
 
-export const getServerSideProps = async ({ params:{id} }:{ params:{ id:string} }) => {
-   const query = await singleUserQuery(id)
-    const queryVideoQuery = await userCreatedPostsQuery(id)
-    const queryLikedQuery = await userLikedPostsQuery(id)
+// export const getServerSideProps = async ({ params:{id} }:{ params:{ id:string} }) => {
+//    const query = await singleUserQuery(id)
+//     const queryVideoQuery = await userCreatedPostsQuery(id)
+//     const queryLikedQuery = await userLikedPostsQuery(id)
 
-    const user = await client.fetch(query)
-    const userVideos = await client.fetch(queryVideoQuery)
-    const userLiked = await client.fetch(queryLikedQuery)
+//     const user = await client.fetch(query)
+//     const userVideos = await client.fetch(queryVideoQuery)
+//     const userLiked = await client.fetch(queryLikedQuery)
     
-    console.log("User ",user)
-    return {
-        props: { 
-            data:{user :user[0] ,userVideos,userLiked}
-        }
-    }
-}
+//     console.log("User ",user)
+//     return {
+//         props: { 
+//             data:{user :user[0] ,userVideos,userLiked}
+//         }
+//     }
+// }
 
 export default Profile
