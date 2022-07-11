@@ -7,6 +7,8 @@ import VideoCard from '../../components/VideoCard'
 
 import { IUser,Video } from '../../types'
 import { BASE_URL } from '../../utils'
+import { client } from '../../utils/client'
+import { singleUserQuery, userCreatedPostsQuery, userLikedPostsQuery } from '../../utils/queries'
 
 interface IProps {
     data: {
@@ -37,6 +39,20 @@ const Profile = ({ data }:IProps) => {
       }
       
   },[showUserVideos,data.userLiked,data.userVideos])
+
+  useEffect(() => {
+   const func = async () => {
+     const { data } = await axios.post(`${BASE_URL}/api/profile`,{
+        id:"106259769714971591941"
+    },{
+      headers: {
+    'Content-Type': 'application/json'
+    }
+    })
+    console.log(data)
+   }
+   func()
+  },[])
 
   return (
     <div className="w-full">
@@ -82,16 +98,18 @@ const Profile = ({ data }:IProps) => {
 
 
 export const getServerSideProps = async ({ params:{id} }:{ params:{ id:string} }) => {
-    const { data } = await axios.post(`${BASE_URL}/api/profile`,{
-        id
-    },{
-      headers: {
-    'Content-Type': 'application/json'
-    }
-    })
+   const query = await singleUserQuery(id)
+    const queryVideoQuery = await userCreatedPostsQuery(id)
+    const queryLikedQuery = await userLikedPostsQuery(id)
+
+    const user = await client.fetch(query)
+    const userVideos = await client.fetch(queryVideoQuery)
+    const userLiked = await client.fetch(queryLikedQuery)
+    
+    console.log("User ",user)
     return {
         props: { 
-            data
+            data:{user :user[0] ,userVideos,userLiked}
         }
     }
 }

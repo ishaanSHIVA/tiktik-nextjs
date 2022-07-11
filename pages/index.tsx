@@ -8,12 +8,29 @@ import VideoCard from '../components/VideoCard'
 import NoResults from '../components/NoResults'
 import { useRouter } from 'next/router'
 import { BASE_URL } from '../utils'
+import { useEffect } from 'react'
 
 interface IProps {
   videos:Video[]
 }
 
 const Home: NextPage<IProps> = ({ videos }) => {
+
+  useEffect(() => {
+    const func  = async () => {
+      const { data } = await axios.post(`${BASE_URL}/api/profile`,{
+        id:'106259769714971591941'
+    },{
+      headers: {
+    'Content-Type': 'application/json'
+    }
+
+    })
+            console.log(data)
+
+  }
+  func()
+  },[])
 
   return (
     <div className="flex flex-col h-full gap-10 videos">
