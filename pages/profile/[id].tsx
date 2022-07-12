@@ -18,13 +18,15 @@ interface IProps {
     }
 }
 
-const Profile = ({ data }:IProps) => {
+const Profile = (props:any) => {
+
+  console.log(props)
 
   return (
-    <div className="">hi</div>
+    <div className="">
+      hi
+    </div>
   )
-
-  console.log(data)
 
   
   const [showUserVideos, setShowUserVideos] = useState(false)
@@ -88,21 +90,24 @@ const Profile = ({ data }:IProps) => {
 }
 
 
-// export const getServerSideProps = async ({ params:{id} }:{ params:{ id:string} }) => {
-//    const query = await singleUserQuery(id)
-//     const queryVideoQuery = await userCreatedPostsQuery(id)
-//     const queryLikedQuery = await userLikedPostsQuery(id)
+export const getServerSideProps = async ({ params:{id} }:{ params:{ id:string} }) => {
+  console.log(id)
+  //  const query = await singleUserQuery(id)
+  //   const queryVideoQuery = await userCreatedPostsQuery(id)
+  //   const queryLikedQuery = await userLikedPostsQuery(id)
 
-//     const user = await client.fetch(query)
-//     const userVideos = await client.fetch(queryVideoQuery)
-//     const userLiked = await client.fetch(queryLikedQuery)
+  //   const user = await client.fetch(query)
+  //   const userVideos = await client.fetch(queryVideoQuery)
+  //   const userLiked = await client.fetch(queryLikedQuery)
+
+  //   const data = {user :user[0] ,userVideos,userLiked}
     
-//     console.log("User ",user)
-//     return {
-//         props: { 
-//             data:{user :user[0] ,userVideos,userLiked}
-//         }
-//     }
-// }
+    // console.log("User ",user)
+    return {
+        props: { 
+            data:{"yo":"misa"}
+        }
+    }
+}
 
 export default Profile
