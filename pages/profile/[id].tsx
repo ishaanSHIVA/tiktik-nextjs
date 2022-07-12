@@ -90,14 +90,14 @@ const Profile = ({ data }:any) => {
   )
 }
 
-export async function getStaticPaths() {
-  return {
-    paths: [
-      { params: { id:"106259769714971591941" } }
-    ],
-    fallback: true // false or 'blocking'
-  };
-}
+// export async function getStaticPaths() {
+//   return {
+//     paths: [
+//       { params: { id:"106259769714971591941" } }
+//     ],
+//     fallback: true // false or 'blocking'
+//   };
+// }
 
 
 export const getServerSideProps = async ({ params:{id} }:{ params:{ id:string} }) => {
