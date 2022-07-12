@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { GoVerified } from 'react-icons/go'
 import NoResults from '../../components/NoResults'
 import VideoCard from '../../components/VideoCard'
+import { useRouter } from 'next/router'
 
 import { IUser,Video } from '../../types'
 import { BASE_URL } from '../../utils'
@@ -19,9 +20,11 @@ interface IProps {
 }
 
 const Profile = ({ data }:any) => {
+  const router = useRouter()
   return (
+    
     <div className="">
-      {data}
+      {router.query.id}
     </div>
   )
   
